@@ -5,6 +5,7 @@ import java.rmi.registry.Registry; //!! To use the Registry
 public class Server {
     public static void main(String[] args) {
         try {
+		Registry startRMI = LocateRegistry.createRegistry(9200); // ?? Ignore error here...
             // !! Set Hostname Server using JavaProperty
             System.setProperty("java.rmi.server.hostname", "127.0.0.1");
             System.out.println("The server is running");
@@ -40,4 +41,6 @@ public class Server {
             System.out.println("Some server error ..." + e);
         }
     }
+
+    
 }

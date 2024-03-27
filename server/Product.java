@@ -7,6 +7,4 @@ public interface Product extends Remote{
     public String Getname() throws RemoteException;
     public String Getdesc() throws RemoteException;
     public double Getprice() throws RemoteException;
-    public String displayItems() throws RemoteException;
-
 }
