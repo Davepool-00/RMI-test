@@ -48,11 +48,11 @@ public class Client {
                         viewProducts(registry); 
                         break;
                     case 2:
-                        System.out.println("Adding guns");
+                        System.out.println("Adding a new product to the cart:");
                         
                         break;
                     case 3:
-                        System.out.println("Buying guns");
+                       System.out.println("Viewing all added products in the cart:");
                         break;
                     case 0:
                         System.out.println("Exiting...");
