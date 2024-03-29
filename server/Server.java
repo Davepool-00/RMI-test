@@ -5,7 +5,7 @@ import java.rmi.registry.Registry; //!! To use the Registry
 public class Server {
     public static void main(String[] args) {
         try {
-		Registry startRMI = LocateRegistry.createRegistry(9200); // ?? Ignore error here...
+            Registry startRMI = LocateRegistry.createRegistry(9200); // ?? Ignore error here...
             // !! Set Hostname Server using JavaProperty
             System.setProperty("java.rmi.server.hostname", "127.0.0.1");
             System.out.println("The server is running");
@@ -31,8 +31,8 @@ public class Server {
             Registry registry = LocateRegistry.getRegistry("127.0.0.1", 9200);
 
             Cart cart = new CartImp();
-            registry.bind("Cart", cart);
 
+            registry.bind("Cart", cart);
             registry.bind("Ak-47", stub1);
             registry.bind("M249", stub2);
             registry.bind("P90", stub3);
@@ -45,5 +45,4 @@ public class Server {
         }
     }
 
-    
 }
