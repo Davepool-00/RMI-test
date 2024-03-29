@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartImp extends UnicastRemoteObject implements Cart {
-    private List<Product> products;
+    private List<String> products;
 
     public CartImp() throws RemoteException {
-        this.products = new ArrayList<>();
+        products = new ArrayList<>();
     }
 
     @Override
-    public void addProduct(Product product) throws RemoteException {
-        products.add(product);
+    public void addProduct(String productName) throws RemoteException {
+        products.add(productName);
     }
 
     @Override
-    public List<Product> getProducts() throws RemoteException {
+    public List<String> getProducts() throws RemoteException {
         return products;
     }
 }

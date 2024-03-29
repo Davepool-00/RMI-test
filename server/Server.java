@@ -30,6 +30,9 @@ public class Server {
             // !! Get the registry to the object
             Registry registry = LocateRegistry.getRegistry("127.0.0.1", 9200);
 
+            Cart cart = new CartImp();
+            registry.bind("Cart", cart);
+
             registry.bind("Assault", stub1);
             registry.bind("LMG", stub2);
             registry.bind("SMG", stub3);

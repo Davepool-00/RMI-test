@@ -1,6 +1,8 @@
 import java.rmi.registry.LocateRegistry; //!! To use the LocateRegistry
 import java.rmi.registry.Registry;
 import java.util.Scanner;
+import java.util.List; 
+
 
 public class Client {
 
@@ -21,6 +23,34 @@ public class Client {
             System.out.println();
         }
     }
+
+
+    public static void addProductToCart(Registry registry, Scanner scanner) throws Exception { //!!
+        System.out.println("Enter the name of the product to add to the cart:");
+        String productName = scanner.next();
+        // Look up the product in the registry
+        Product product = (Product) registry.lookup(productName);
+        // Call the Cart service to add the product to the cart
+        Cart cart = (Cart) registry.lookup("Cart");
+        cart.addProduct(productName);
+        System.out.println("Product added to the cart successfully!");
+    }
+    
+    public static void viewCart(Registry registry) throws Exception { //!! 
+        // Look up the Cart service from the registry
+        Cart cart = (Cart) registry.lookup("Cart");
+        List<String> productsInCart = cart.getProducts();
+        if (productsInCart.isEmpty()) {
+            System.out.println("Cart is empty.");
+        } else {
+            System.out.println("Products in the cart:");
+            for (String product : productsInCart) {
+                System.out.println(product);
+            }
+        }
+    }
+
+    
 
     public static void main(String[] args) {
         try {
@@ -46,10 +76,11 @@ public class Client {
                         break;
                     case 2:
                         System.out.println("\n\nAdding a new product to the cart:\n\n");
-
+                        addProductToCart(registry, scanner);
                         break;
                     case 3:
                         System.out.println("\n\nCart inventory:\n\n");
+                        viewCart(registry);
                         break;
                     case 0:
                         System.out.println("\n\nExiting...\n\n");
