@@ -33,10 +33,10 @@ public class Server {
             Cart cart = new CartImp();
             registry.bind("Cart", cart);
 
-            registry.bind("Assault", stub1);
-            registry.bind("LMG", stub2);
-            registry.bind("SMG", stub3);
-            registry.bind("Semi Pistol", stub4);
+            registry.bind("Ak-47", stub1);
+            registry.bind("M249", stub2);
+            registry.bind("P90", stub3);
+            registry.bind("P2000", stub4);
 
             System.out.println("Exporting and Binding done...");
 

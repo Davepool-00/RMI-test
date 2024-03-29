@@ -9,10 +9,10 @@ public class Client {
     public static void viewProducts(Registry registry) throws Exception { // !! use for case 1 and view all products
         // Get all available products from the server
         Product[] products = {
-                (Product) registry.lookup("Assault"),
-                (Product) registry.lookup("LMG"),
-                (Product) registry.lookup("SMG"),
-                (Product) registry.lookup("Semi Pistol")
+                (Product) registry.lookup("Ak-47"),
+                (Product) registry.lookup("M249"),
+                (Product) registry.lookup("P90"),
+                (Product) registry.lookup("P2000")
         };
 
         // Display information for each product
