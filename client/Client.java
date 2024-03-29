@@ -15,7 +15,7 @@ public class Client {
                 (Product) registry.lookup("P2000")
         };
 
-        // Display information for each product
+        //!  Display information for each product
         for (Product product : products) {
             System.out.println("Name: " + product.Getname());
             System.out.println("Price: " + product.Getprice());
@@ -25,27 +25,32 @@ public class Client {
     }
 
 
-    public static void addProductToCart(Registry registry, Scanner scanner) throws Exception { //!!
+    public static void addProductToCart(Registry registry, Scanner scanner) throws Exception { //!! use for case 2 to add products
         System.out.println("Enter the name of the product to add to the cart:");
+        System.out.println("(This is a case-sensitive part)");
         String productName = scanner.next();
-        // Look up the product in the registry
-        Product product = (Product) registry.lookup(productName);
-        // Call the Cart service to add the product to the cart
+        //!! Look up the product in the registry
+        Product product = (Product) registry.lookup(productName); //!! force the user to only add product name to cart
+        //!! Call the Cart service to add the product to the cart
         Cart cart = (Cart) registry.lookup("Cart");
         cart.addProduct(productName);
         System.out.println("Product added to the cart successfully!");
     }
     
-    public static void viewCart(Registry registry) throws Exception { //!! 
-        // Look up the Cart service from the registry
+    public static void viewCart(Registry registry) throws Exception { //!! use for case 3 in displaying the products
+        //!! Look up the Cart service from the registry
         Cart cart = (Cart) registry.lookup("Cart");
         List<String> productsInCart = cart.getProducts();
         if (productsInCart.isEmpty()) {
             System.out.println("Cart is empty.");
         } else {
             System.out.println("Products in the cart:");
-            for (String product : productsInCart) {
-                System.out.println(product);
+            for (String productName : productsInCart) {
+                Product product = (Product) registry.lookup(productName);
+                System.out.println("Name: " + product.Getname());
+                System.out.println("Price: " + product.Getprice());
+                System.out.println("Description: " + product.Getdesc());
+                System.out.println();
             }
         }
     }
