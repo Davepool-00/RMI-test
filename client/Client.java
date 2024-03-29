@@ -15,8 +15,8 @@ public class Client {
                 (Product) registry.lookup("P2000")
         };
 
-        //!  Display information for each product
-        for (Product product : products) {
+
+        for (Product product : products) {                               //!  Display information for each product
             System.out.println("Name: " + product.Getname());
             System.out.println("Price: " + product.Getprice());
             System.out.println("Description: " + product.Getdesc());
@@ -30,9 +30,9 @@ public class Client {
         System.out.println("(This is a case-sensitive part)");
         String productName = scanner.next();
         //!! Look up the product in the registry
-        Product product = (Product) registry.lookup(productName); //!! force the user to only add product name to cart
-        //!! Call the Cart service to add the product to the cart
-        Cart cart = (Cart) registry.lookup("Cart");
+        Product product = (Product) registry.lookup(productName); //!! force the user to only add product name to cart 
+        //!! Call the Cart service to add the product to the cart   
+        Cart cart = (Cart) registry.lookup("Cart");            //?? Also ignore error above line 33
         cart.addProduct(productName);
         System.out.println("Product added to the cart successfully!");
     }
