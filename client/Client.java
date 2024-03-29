@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Client {
 
-    public static void viewProducts(Registry registry) throws Exception { //!! use for case 1 and view all products
+    public static void viewProducts(Registry registry) throws Exception { // !! use for case 1 and view all products
         // Get all available products from the server
         Product[] products = {
-            (Product) registry.lookup("Assault"),
-            (Product) registry.lookup("LMG"),
-            (Product) registry.lookup("SMG"),
-            (Product) registry.lookup("Semi Pistol")
+                (Product) registry.lookup("Assault"),
+                (Product) registry.lookup("LMG"),
+                (Product) registry.lookup("SMG"),
+                (Product) registry.lookup("Semi Pistol")
         };
 
         // Display information for each product
@@ -22,9 +22,6 @@ public class Client {
         }
     }
 
-    
-
-    
     public static void main(String[] args) {
         try {
             // !! Here we call from the Server and get the objects from the RMI registry
@@ -33,30 +30,34 @@ public class Client {
 
             Scanner scanner = new Scanner(System.in); // ! Ignore error here...
             int userInput = 0;
-            do {    
+            do {
                 System.out.println("\n\n ==== Menu ==== \n");
                 System.out.println("[1] Display all guns");
-                System.out.println("[2] Add gun");
-                System.out.println("[3] Buy gun");
+                System.out.println("[2] Add product to cart");
+                System.out.println("[3] View Cart");
                 System.out.println("[0] Exit");
                 System.out.print("Input command: ");
                 userInput = scanner.nextInt();
                 // !! Switch case
                 switch (userInput) {
                     case 1:
-                        System.out.println("\n\nDisplaying guns\n");
-                        viewProducts(registry); 
+                        System.out.println("\n\nDisplaying guns\n\n");
+                        viewProducts(registry);
                         break;
                     case 2:
-                        System.out.println("Adding a new product to the cart:");
-                        
+                        System.out.println("\n\nAdding a new product to the cart:\n\n");
+
                         break;
                     case 3:
-                       System.out.println("Viewing all added products in the cart:");
+                        System.out.println("\n\nCart inventory:\n\n");
                         break;
                     case 0:
-                        System.out.println("Exiting...");
-                    break;
+                        System.out.println("\n\nExiting...\n\n");
+                        break;
+
+                    default:
+                        System.out.println("\n\nInvalid input... Try again\n\n");
+                        break;
                 }
                 // !! End of switch case
 
