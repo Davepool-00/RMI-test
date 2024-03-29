@@ -8,12 +8,12 @@ public class Cart {
         this.products = new ArrayList<>();
     }
 
-    // Method to add a product to the cart
+    //!!  to add a product to the cart
     public void addProduct(Product product) {
         products.add(product);
     }
 
-    // Method to view all added products in the cart
+    //!!  to view all added products in the cart
     public void viewAddedProducts() {
         System.out.println("Products in the cart:");
         for (Product product : products) {
