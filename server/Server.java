@@ -3,6 +3,25 @@ import java.rmi.registry.LocateRegistry; //!! To use the LocateRegistry
 import java.rmi.registry.Registry; //!! To use the Registry
 
 public class Server {
+
+    public static void viewProducts(Registry registry) throws Exception { // !! view all products
+        // Get all available products from the server
+        Product[] products = {
+                (Product) registry.lookup("Ak-47"),
+                (Product) registry.lookup("M249"),
+                (Product) registry.lookup("P90"),
+                (Product) registry.lookup("P2000")
+        };
+
+
+        for (Product product : products) {                               //!  Display information for each product
+            System.out.println("Name: " + product.Getname());
+            System.out.println("Price: " + product.Getprice());
+            System.out.println("Description: " + product.Getdesc());
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         try {
             Registry startRMI = LocateRegistry.createRegistry(9200); // ?? Ignore error here...
@@ -38,6 +57,8 @@ public class Server {
             registry.bind("P90", stub3);
             registry.bind("P2000", stub4);
 
+
+            viewProducts(registry);
             System.out.println("Exporting and Binding done...");
 
         } catch (Exception e) {

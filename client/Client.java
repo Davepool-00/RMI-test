@@ -102,7 +102,9 @@ public class Client {
             System.out.println("Client side done...");
 
         } catch (Exception e) {
-            System.out.println("Client side error... " + e);
+            System.out.println("\n\n\nClient side error... " + e);
+            System.out.println("================================================");
+            System.out.println("Try following command :)");
         }
     }
 
