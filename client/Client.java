@@ -1,8 +1,7 @@
 import java.rmi.registry.LocateRegistry; //!! To use the LocateRegistry
 import java.rmi.registry.Registry;
 import java.util.Scanner;
-import java.util.List; 
-
+import java.util.List;
 
 public class Client {
 
@@ -15,8 +14,7 @@ public class Client {
                 (Product) registry.lookup("P2000")
         };
 
-
-        for (Product product : products) {                               //!  Display information for each product
+        for (Product product : products) { // ! Display information for each product
             System.out.println("Name: " + product.Getname());
             System.out.println("Price: " + product.Getprice());
             System.out.println("Description: " + product.Getdesc());
@@ -24,21 +22,21 @@ public class Client {
         }
     }
 
-
-    public static void addProductToCart(Registry registry, Scanner scanner) throws Exception { //!! use for case 2 to add products
+    public static void addProductToCart(Registry registry, Scanner scanner) throws Exception { // !! use for case 2 to
+                                                                                               // add products
         System.out.println("Enter the name of the product to add to the cart:");
         System.out.println("(This is a case-sensitive part)");
         String productName = scanner.next();
-        //!! Look up the product in the registry
-        Product product = (Product) registry.lookup(productName); //!! force the user to only add product name to cart 
-        //!! Call the Cart service to add the product to the cart   
-        Cart cart = (Cart) registry.lookup("Cart");            //?? Also ignore error above line 33
+        // !! Look up the product in the registry
+        Product product = (Product) registry.lookup(productName); // !! force the user to only add product name to cart
+        // !! Call the Cart service to add the product to the cart
+        Cart cart = (Cart) registry.lookup("Cart");
         cart.addProduct(productName);
         System.out.println("Product added to the cart successfully!");
     }
-    
-    public static void viewCart(Registry registry) throws Exception { //!! use for case 3 in displaying the products
-        //!! Look up the Cart service from the registry
+
+    public static void viewCart(Registry registry) throws Exception { // !! use for case 3 in displaying the products
+        // !! Look up the Cart service from the registry
         Cart cart = (Cart) registry.lookup("Cart");
         List<String> productsInCart = cart.getProducts();
         if (productsInCart.isEmpty()) {
@@ -55,8 +53,6 @@ public class Client {
         }
     }
 
-    
-
     public static void main(String[] args) {
         try {
             // !! Here we call from the Server and get the objects from the RMI registry
@@ -66,11 +62,15 @@ public class Client {
             Scanner scanner = new Scanner(System.in); // ! Ignore error here...
             int userInput = 0;
             do {
-                System.out.println("\n\n ==== Menu ==== \n");
-                System.out.println("[1] Display all guns");
-                System.out.println("[2] Add product to cart");
-                System.out.println("[3] View Cart");
-                System.out.println("[0] Exit");
+                System.out.println("\n\n");
+                System.out.println("╔════════════════════════════════╗");
+                System.out.println("║             MENU               ║");
+                System.out.println("╠════════════════════════════════╣");
+                System.out.println("║ [1] Display all guns           ║");
+                System.out.println("║ [2] Add product to cart        ║");
+                System.out.println("║ [3] View Cart                  ║");
+                System.out.println("║ [0] Exit                       ║");
+                System.out.println("╚════════════════════════════════╝");
                 System.out.print("Input command: ");
                 userInput = scanner.nextInt();
                 // !! Switch case

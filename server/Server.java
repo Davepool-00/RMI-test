@@ -24,7 +24,7 @@ public class Server {
 
     public static void main(String[] args) {
         try {
-            Registry startRMI = LocateRegistry.createRegistry(9200); // ?? Ignore error here...
+            Registry startRMI = LocateRegistry.createRegistry(9200); // ?? Ignore error here... || this automatically start the rmi instead of using start RMI
             // !! Set Hostname Server using JavaProperty
             System.setProperty("java.rmi.server.hostname", "127.0.0.1");
             System.out.println("The server is running");
@@ -37,7 +37,6 @@ public class Server {
             ProductImp p4 = new ProductImp("P2000", "Semi-automatic Pistol", 560.47);
 
             // !! Exporting Objects using UnicastRemoteObject class
-
             Product stub1 = (Product) UnicastRemoteObject.exportObject(p1, 0);
             Product stub2 = (Product) UnicastRemoteObject.exportObject(p2, 0);
             Product stub3 = (Product) UnicastRemoteObject.exportObject(p3, 0);
@@ -51,6 +50,7 @@ public class Server {
 
             Cart cart = new CartImp();
 
+            // !! binding 
             registry.bind("Cart", cart);
             registry.bind("Ak-47", stub1);
             registry.bind("M249", stub2);
